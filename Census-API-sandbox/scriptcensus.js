@@ -15,19 +15,19 @@ $(document).on("click", ".searches", function(event){
     i = states.indexOf(selection)
     console.log(i)
 
-    var queryURL = "api.census.gov/data/2019/pep/population?get=COUNTY,DATE_CODE,DATE_DESC,DENSITY,POP,NAME,STATE&for=region:*&key=66110e19505a9a3f06751cc9e7e2b113c5a482bb";
+    var queryURL = "https://api.census.gov/data/2019/pep/population?get=COUNTY,DATE_CODE,DATE_DESC,DENSITY,POP,NAME,STATE&for=region:*&key=66110e19505a9a3f06751cc9e7e2b113c5a482bb";
      $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        console.log(response);
+        console.table(response);
 
-        var population = POP;
-        var state = response[i].STATE
+        // var population = POP;
+        // var state = response.STATE
 
 
-        console.log(population)
-        console.log(state)
+        // console.log(population)
+        // console.log(state)
 
 
 
