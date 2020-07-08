@@ -980,7 +980,7 @@
 }
 
 .teal {
-  background-color: #009688 !important;
+  background-color: #d6234a8c !important;
 }
 
 .teal-text {
@@ -2604,7 +2604,7 @@ ul:not(.browser-default) > li {
 }
 
 a {
-  color: #039be5;
+  color: #00d9ff;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -2942,12 +2942,13 @@ ul.staggered-list li {
 }
 
 .page-footer {
-  padding-top: 20px;
+  /* padding-top: 20px; */
   color: #fff;
   background-color: #ee6e73;
 }
 
 .page-footer .footer-copyright {
+  text-align: center;
   overflow: hidden;
   min-height: 50px;
   display: -webkit-box;
@@ -2964,7 +2965,7 @@ ul.staggered-list li {
           justify-content: space-between;
   padding: 10px 0px;
   color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(51, 51, 51, 0.08);
+  background-color: rgba(51, 51, 51, 0.658);
 }
 
 table, th, td {
@@ -4737,7 +4738,7 @@ small {
   padding: 24px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
-  background-color: #fff;
+  background-color: #ffc4c4a1;;
 }
 
 .card {
@@ -5244,13 +5245,13 @@ small {
 
 .btn:focus, .btn-large:focus, .btn-small:focus,
 .btn-floating:focus {
-  background-color: #1d7d74;
+  background-color: #dd2525;
 }
 
 .btn, .btn-large, .btn-small {
   text-decoration: none;
   color: #fff;
-  background-color: #26a69a;
+  background-color: #dd2525;
   text-align: center;
   letter-spacing: .5px;
   -webkit-transition: background-color .2s ease-out;
@@ -5259,7 +5260,7 @@ small {
 }
 
 .btn:hover, .btn-large:hover, .btn-small:hover {
-  background-color: #2bbbad;
+  background-color: #ee6060;
 }
 
 .btn-floating {
@@ -6131,9 +6132,10 @@ textarea.materialize-textarea {
   border-radius: 0;
   outline: none;
   height: 3rem;
-  width: 100%;
-  font-size: 16px;
-  margin: 0 0 8px 0;
+  width: 20%;
+  font-size: 14px;
+  color: white;
+  margin: 8px 0 8px 10px;
   padding: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -8477,10 +8479,19 @@ input[type=range]::-ms-thumb {
   visibility: visible;
   -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
           animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s 1s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
 }
 
 .tap-target {
@@ -8533,10 +8544,19 @@ input[type=range]::-ms-thumb {
 
 .tap-target-wave::after {
   visibility: hidden;
-  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s;
-  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s,
+ visibility 0s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ visibility 0s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s,
+ -webkit-transform .3s;
   z-index: -1;
 }
 
