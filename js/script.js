@@ -15,68 +15,68 @@ $(document).on("click", ".searches", function(event){
         console.log(response);
         var state = selection;
         var stateScore = "(" + response[i].dataQualityGrade + ")"
-        var cases = response[i].positive.toLocaleString()
-        var recovered = response[i].recovered.toLocaleString()
-        var casesPer = "("+ (Math.trunc(((response[i].positive/population[i])*1000000))).toLocaleString()+" per million)"
-        var deaths = response[i].death.toLocaleString()
-        var deathsPer = "("+ (Math.trunc(((response[i].death/population[i])*1000000))).toLocaleString()+" per million)"
-        var newCases = response[i].positiveIncrease.toLocaleString()
+        var cases = response[i].positive
+        var recovered = response[i].recovered
+        var casesPer = "("+ (Math.trunc(((response[i].positive/population[i])*1000000)))+" per million)"
+        var deaths = response[i].death
+        var deathsPer = "("+ (Math.trunc(((response[i].death/population[i])*1000000)))+" per million)"
+        var newCases = response[i].positiveIncrease
 
         
         if(response[i].positiveIncrease === null){
             newCasesPer = ""
-        } else {newCasesPer = "("+ (Math.trunc(((response[i].positiveIncrease/population[i])*1000000))).toLocaleString()+" per million)"
+        } else {newCasesPer = "("+ (Math.trunc(((response[i].positiveIncrease/population[i])*1000000)))+" per million)"
         }   
 
 
         if(response[i].recovered === null){
             recoveredPer = ""
-        } else {recoveredPer = "("+ (Math.trunc(((response[i].recovered/population[i])*1000000))).toLocaleString()+" per million)"
+        } else {recoveredPer = "("+ (Math.trunc(((response[i].recovered/population[i])*1000000)))+" per million)"
         }   
 
         if(response[i].recovered === null){
             activePer = ""
-        } else {activePer = "("+ (Math.trunc((((cases - recovered - deaths)/population[i])*1000000))).toLocaleString()+" per million)"
+        } else {activePer = "("+ (Math.trunc((((cases - recovered - deaths)/population[i])*1000000)))+" per million)"
         }    
 
         if(response[i].recovered === null){
             activeIndicator = "Data Not Available"
-        } else {activeIndicator = (Math.trunc((((cases - recovered - deaths)/population[i])*1000000))).toLocaleString()
+        } else {activeIndicator = (Math.trunc((((cases - recovered - deaths)/population[i])*1000000)))
         }    
 
         if(response[i].inIcuCurrently === null){
             inIcu = "Data Not Available"
-        } else {inIcu = response[i].inIcuCurrently.toLocaleString()
+        } else {inIcu = response[i].inIcuCurrently
         }
         
         if(response[i].onVentilatorCurrently === null){
             ventilator = "Data Not Available"
-        } else {ventilator = response[i].onVentilatorCurrently.toLocaleString()
+        } else {ventilator = response[i].onVentilatorCurrently
         }
 
         if(response[i].hospitalized === null){
             hospitalized = "Not Reported"
-        } else { hospitalized = response[i].hospitalized.toLocaleString()
+        } else { hospitalized = response[i].hospitalized
         }
 
         if(response[i].hospitalizedCurrently === null){
             currentHosp = "Data Not Available"
-        } else { currentHosp = response[i].hospitalizedCurrently.toLocaleString()
+        } else { currentHosp = response[i].hospitalizedCurrently
         }
 
         if(response[i].recovered === null){
             active = "Data Not Available"
-        } else {active = (cases - recovered - deaths).toLocaleString()
+        } else {active = (cases - recovered - deaths)
         }        
 
         if(response[i].hospitalized === null){
             hospIncrease = "Data Not Available"
-        } else {hospIncrease = response[i].hospitalizedIncrease.toLocaleString()
+        } else {hospIncrease = response[i].hospitalizedIncrease
         }
 
         if(response[i].recovered === null){
             recovered = "Data Not Available"
-        } else {recovered = response[i].recovered.toLocaleString()
+        } else {recovered = response[i].recovered
         }
 
         var positive = response[i].positive
@@ -99,22 +99,22 @@ $(document).on("click", ".searches", function(event){
 
         $("#state").empty().append(displayState);
         $("#stateScore").empty().append(stateScore);
-        $("#population").empty().append(pop);
-        $("#cases").empty().append(cases);
-        $("#recovered").empty().append(recovered);
-        $("#recoveredPerc").empty().append(recoveredPer);
-        $("#deaths").empty().append(deaths);
-        $("#active").empty().append(active);
-        $("#casesPerc").empty().append(casesPer);
-        $("#hospitalizations").empty().append(currentHosp);
-        $("#deaths").empty().append(deaths);
-        $("#deathsPerc").empty().append(deathsPer);
-        $("#icu").empty().append(inIcu);
-        $("#ventilator").empty().append(ventilator);
-        $("#activePerc").empty().append(activePer);
+        $("#population").empty().append(pop.toLocaleString());
+        $("#cases").empty().append(cases.toLocaleString());
+        $("#recovered").empty().append(recovered.toLocaleString());
+        $("#recoveredPerc").empty().append(recoveredPer.toLocaleString());
+        $("#deaths").empty().append(deaths.toLocaleString());
+        $("#active").empty().append(active.toLocaleString());
+        $("#casesPerc").empty().append(casesPer.toLocaleString());
+        $("#hospitalizations").empty().append(currentHosp.toLocaleString());
+        $("#deaths").empty().append(deaths.toLocaleString());
+        $("#deathsPerc").empty().append(deathsPer.toLocaleString());
+        $("#icu").empty().append(inIcu.toLocaleString());
+        $("#ventilator").empty().append(ventilator.toLocaleString());
+        $("#activePerc").empty().append(activePer.toLocaleString());
         $("#link").empty().append(newUrl);
-        $("#newCases").empty().append(newCases);
-        $("#newCasesPerc").empty().append(newCasesPer);
+        $("#newCases").empty().append(newCases.toLocaleString());
+        $("#newCasesPerc").empty().append(newCasesPer.toLocaleString());
    
 
         if(activeIndicator === "Data Not Available") {
