@@ -15,12 +15,12 @@ $(document).on("click", ".searches", function(event){
         console.log(response);
         var state = selection;
         var stateScore = "(" + response[i].dataQualityGrade + ")"
-        var cases = response[i].positive.toLocaleString()
-        var recovered = response[i].recovered.toLocaleString()
+        var cases = response[i].positive
+        var recovered = response[i].recovered
         var casesPer = "("+ (Math.trunc(((response[i].positive/population[i])*1000000))).toLocaleString()+" per million)"
-        var deaths = response[i].death.toLocaleString()
+        var deaths = response[i].death
         var deathsPer = "("+ (Math.trunc(((response[i].death/population[i])*1000000))).toLocaleString()+" per million)"
-        var newCases = response[i].positiveIncrease.toLocaleString()
+        var newCases = response[i].positiveIncrease
 
         
         if(response[i].positiveIncrease === null){
@@ -99,22 +99,22 @@ $(document).on("click", ".searches", function(event){
 
         $("#state").empty().append(displayState);
         $("#stateScore").empty().append(stateScore);
-        $("#population").empty().append(pop);
-        $("#cases").empty().append(cases);
-        $("#recovered").empty().append(recovered);
-        $("#recoveredPerc").empty().append(recoveredPer);
-        $("#deaths").empty().append(deaths);
-        $("#active").empty().append(active);
-        $("#casesPerc").empty().append(casesPer);
-        $("#hospitalizations").empty().append(currentHosp);
-        $("#deaths").empty().append(deaths);
-        $("#deathsPerc").empty().append(deathsPer);
-        $("#icu").empty().append(inIcu);
-        $("#ventilator").empty().append(ventilator);
-        $("#activePerc").empty().append(activePer);
+        $("#population").empty().append(pop.toLocaleString());
+        $("#cases").empty().append(cases.toLocaleString());
+        $("#recovered").empty().append(recovered.toLocaleString());
+        $("#recoveredPerc").empty().append(recoveredPer.toLocaleString());
+        $("#deaths").empty().append(deaths.toLocaleString());
+        $("#active").empty().append(active.toLocaleString());
+        $("#casesPerc").empty().append(casesPer.toLocaleString());
+        $("#hospitalizations").empty().append(currentHosp.toLocaleString());
+        $("#deaths").empty().append(deaths.toLocaleString());
+        $("#deathsPerc").empty().append(deathsPer.toLocaleString());
+        $("#icu").empty().append(inIcu.toLocaleString());
+        $("#ventilator").empty().append(ventilator.toLocaleString());
+        $("#activePerc").empty().append(activePer.toLocaleString());
         $("#link").empty().append(newUrl);
-        $("#newCases").empty().append(newCases);
-        $("#newCasesPerc").empty().append(newCasesPer);
+        $("#newCases").empty().append(newCases.toLocaleString());
+        $("#newCasesPerc").empty().append(newCasesPer.toLocaleString());
    
 
         if(activeIndicator === "Data Not Available") {
