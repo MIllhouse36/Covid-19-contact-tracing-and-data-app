@@ -143,7 +143,7 @@ $(document).on("click", ".searches", function(event){
 
       
 
-        var queryURL = "https://gnews.io/api/v3/search?q=" + displayState +"-19&token=b99b9a647a217388e8e3d23e85e198ff";
+        var queryURL = "https://gnews.io/api/v3/search?q=" + displayState +"-19&token=c3f248a0bf57c314204e7e2deb34f99e";
         $.ajax({
            url: queryURL,
            method: "GET"
