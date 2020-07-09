@@ -28,6 +28,7 @@ body {
   font-size: 16px;
   line-height: 1;
   background-image: url(images/COVID2.jpg);
+  /* background-repeat: no-repeat; */
 }
 
 h2,h3 {
