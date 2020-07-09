@@ -54,8 +54,14 @@ h4 {
     margin-right: auto;
     text-align: center;
 }
+
 #search {
   padding-top: 10px;
+}
+
+#citySearch {
+  text-align: center;
+  width: 10%;
 }
 
 .card-panel {
