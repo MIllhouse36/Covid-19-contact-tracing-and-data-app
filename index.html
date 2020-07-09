@@ -24,38 +24,37 @@
     <div class="nav-wrapper container">
       <form>
         <h2 class="">Search for State</h2>
-        <input class="card s2" id="citySearch" size="40" type="search" required>
+        <input class="card l2 s12" id="citySearch" size="40" type="search" required>
         <button class="btn btn-outline-success searches" id="searchBtn" type="submit">Search</button>
       </form>
     </div>
 
-    <Main class="main hide " id="main">
+    <Main class="main container hide" id="main">
       <div class="row">
-        <div class="col s4 card-panel currentData">
-          <div class="current ml-2"><b>State</b>: <span id="state"></span> <span id="stateScore"> </span></div>
-          <div class="current ml-2"><b>Population</b>: <span id="population"></span> </div>
-          <div class="current ml-2"><b>Total Cases</b>: <span id="cases"></span> <span id="casesPerc"></span> </div>
-          <div class="current ml-2"><b>Total Deaths</b>: <span id="deaths"></span> <span id="deathsPerc"></span> </div>
-          <div class="current ml-2"><b>Total Recovered</b>: <span id="recovered"></span> <span
-              id="recoveredPerc"></span>
+        <div class="col l4 s12 card-panel currentData">
+          <div class="current"><b>State</b>: <span id="state"></span> <span id="stateScore"> </span></div>
+          <div class="current"><b>Population</b>: <span id="population"></span> </div>
+          <div class="current"><b>Total Cases</b>: <span id="cases"></span> <span id="casesPerc"></span> </div>
+          <div class="current"><b>Total Deaths</b>: <span id="deaths"></span> <span id="deathsPerc"></span> </div>
+          <div class="current"><b>Total Recovered</b>: <span id="recovered"></span> <span id="recoveredPerc"></span>
           </div>
-          <div class="current ml-2"><b>Currently Active</b>: <span id="active"></span> <span id="activePerc"> </span>
+          <div class="current"><b>Currently Active</b>: <span id="active"></span> <span id="activePerc"> </span>
           </div>
-          <div class="current ml-2"><b>New Cases</b>: <span id="newCases"></span> <span id="newCasesPerc"> </span>
+          <div class="current"><b>New Cases</b>: <span id="newCases"></span> <span id="newCasesPerc"> </span>
           </div>
-          <div class="current ml-2"><b>Current Hospitalizations</b>: <span id="hospitalizations"></span> </div>
-          <div class="current ml-2"><b>Current in ICU</b>: <span id="icu"></span> </div>
-          <div class="current ml-2"><b>Current On Ventilator</b>: <span id="ventilator"></span> </div>
+          <div class="current"><b>Current Hospitalizations</b>: <span id="hospitalizations"></span> </div>
+          <div class="current"><b>Current in ICU</b>: <span id="icu"></span> </div>
+          <div class="current"><b>Current On Ventilator</b>: <span id="ventilator"></span> </div>
           <div class="current" id="link"> </div>
           <br>
         </div>
 
-        <div class="col s4  center-align">
+        <div class="col l4 s12  center-align">
           <h4 id="DestInd s3">Destination Indicator</h4>
           <img class="image s3" id="indicator" src="" alt="">
         </div>
 
-        <div class="col s4 card-panel push-s1">
+        <div class="col l4 s12 card-panel">
           <h5>Analysis</h5>
           <div class="guidlines" id="analyis"> </div>
           <br>
@@ -64,7 +63,7 @@
       </div>
     </Main>
 
-    <footer class="page-footer teal" id="footer">
+    <footer class="page-footer teal container" id="footer">
       <div class="row hide">
         <div class="col l6 s12">
           <h2 class="white-text ">Related Top State News</h2>
