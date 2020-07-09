@@ -4,11 +4,12 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-  <title>COVID-19</title>
+  <title>COVID-19 Travel Assistant</title>
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="assets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="assets/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link rel="icon" href="/assets/images/covid-19-favicon.png" type="image/png">
 
 </head>
 
@@ -22,15 +23,15 @@
     <!-- NAV Bar -->
 
     <div class="nav-wrapper container">
-      <form>
-        <h2 class="">Search for State</h2>
+      <form class="center-align">
+        <h2>Search for State</h2>
         <input class="card l2 s12" id="citySearch" size="40" type="search" required>
         <button class="btn btn-outline-success searches" id="searchBtn" type="submit">Search</button>
       </form>
     </div>
 
     <Main class="main container hide" id="main">
-      <div class="row">
+      <div class="row container">
         <div class="col l4 s12 card-panel currentData">
           <div class="current"><b>State</b>: <span id="state"></span> <span id="stateScore"> </span></div>
           <div class="current"><b>Population</b>: <span id="population"></span> </div>
@@ -63,8 +64,8 @@
       </div>
     </Main>
 
-    <footer class="page-footer teal container" id="footer">
-      <div class="row hide">
+    <footer class="page-footer teal hide" id="footer">
+      <div class="row container">
         <div class="col l6 s12">
           <h2 class="white-text ">Related Top State News</h2>
         </div>
