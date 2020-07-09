@@ -1,11 +1,6 @@
-var states = ["AK","AL","AR","AS","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MP","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
-i = states.indexOf("AR")
-console.log(i)
-
-
 $(document).on("click", ".searches", function(event){
     event.preventDefault();   
-   
+    var states = ["AK","AL","AR","AS","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MP","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
     if ($(this).attr("id") === "searchBtn") {
         selection = $("#citySearch").val();
     }
@@ -20,68 +15,68 @@ $(document).on("click", ".searches", function(event){
         console.log(response);
         var state = selection;
         var stateScore = "(" + response[i].dataQualityGrade + ")"
-        var cases = response[i].positive
-        var recovered = response[i].recovered
-        var casesPer = "("+ (Math.trunc(((response[i].positive/population[i])*1000000)))+" per million)"
-        var deaths = response[i].death
-        var deathsPer = "("+ (Math.trunc(((response[i].death/population[i])*1000000)))+" per million)"
-        var newCases = response[i].positiveIncrease
+        var cases = response[i].positive.toLocaleString()
+        var recovered = response[i].recovered.toLocaleString()
+        var casesPer = "("+ (Math.trunc(((response[i].positive/population[i])*1000000))).toLocaleString()+" per million)"
+        var deaths = response[i].death.toLocaleString()
+        var deathsPer = "("+ (Math.trunc(((response[i].death/population[i])*1000000))).toLocaleString()+" per million)"
+        var newCases = response[i].positiveIncrease.toLocaleString()
 
         
         if(response[i].positiveIncrease === null){
             newCasesPer = ""
-        } else {newCasesPer = "("+ (Math.trunc(((response[i].positiveIncrease/population[i])*1000000)))+" per million)"
+        } else {newCasesPer = "("+ (Math.trunc(((response[i].positiveIncrease/population[i])*1000000))).toLocaleString()+" per million)"
         }   
 
 
         if(response[i].recovered === null){
             recoveredPer = ""
-        } else {recoveredPer = "("+ (Math.trunc(((response[i].recovered/population[i])*1000000)))+" per million)"
+        } else {recoveredPer = "("+ (Math.trunc(((response[i].recovered/population[i])*1000000))).toLocaleString()+" per million)"
         }   
 
         if(response[i].recovered === null){
             activePer = ""
-        } else {activePer = "("+ (Math.trunc((((cases - recovered - deaths)/population[i])*1000000)))+" per million)"
+        } else {activePer = "("+ (Math.trunc((((cases - recovered - deaths)/population[i])*1000000))).toLocaleString()+" per million)"
         }    
 
         if(response[i].recovered === null){
             activeIndicator = "Data Not Available"
-        } else {activeIndicator = (Math.trunc((((cases - recovered - deaths)/population[i])*1000000)))
+        } else {activeIndicator = (Math.trunc((((cases - recovered - deaths)/population[i])*1000000))).toLocaleString()
         }    
 
         if(response[i].inIcuCurrently === null){
             inIcu = "Data Not Available"
-        } else {inIcu = response[i].inIcuCurrently
+        } else {inIcu = response[i].inIcuCurrently.toLocaleString()
         }
         
         if(response[i].onVentilatorCurrently === null){
             ventilator = "Data Not Available"
-        } else {ventilator = response[i].onVentilatorCurrently
+        } else {ventilator = response[i].onVentilatorCurrently.toLocaleString()
         }
 
         if(response[i].hospitalized === null){
             hospitalized = "Not Reported"
-        } else { hospitalized = response[i].hospitalized
+        } else { hospitalized = response[i].hospitalized.toLocaleString()
         }
 
         if(response[i].hospitalizedCurrently === null){
             currentHosp = "Data Not Available"
-        } else { currentHosp = response[i].hospitalizedCurrently
+        } else { currentHosp = response[i].hospitalizedCurrently.toLocaleString()
         }
 
         if(response[i].recovered === null){
             active = "Data Not Available"
-        } else {active = (cases - recovered - deaths)
+        } else {active = (cases - recovered - deaths).toLocaleString()
         }        
 
         if(response[i].hospitalized === null){
             hospIncrease = "Data Not Available"
-        } else {hospIncrease = response[i].hospitalizedIncrease
+        } else {hospIncrease = response[i].hospitalizedIncrease.toLocaleString()
         }
 
         if(response[i].recovered === null){
             recovered = "Data Not Available"
-        } else {recovered = response[i].recovered
+        } else {recovered = response[i].recovered.toLocaleString()
         }
 
         var positive = response[i].positive
@@ -123,19 +118,19 @@ $(document).on("click", ".searches", function(event){
    
 
         if(activeIndicator === "Data Not Available") {
-            $('#indicator').attr('src','./assets/images/NoInfo.png');
+            $('#indicator').attr('src','NoInfo.jpg');
         } else if(activeIndicator <= 1000) {
-            $('#indicator').attr('src','./assets/images/Good.png');
+            $('#indicator').attr('src','Good.jpg');
         } else if (activeIndicator >= 1000 && activeIndicator <= 3000) { 
-            $('#indicator').attr('src','./assets/images/Caution.png');
-        } else $('#indicator').attr('src','./assets/images/Warning.png');
+            $('#indicator').attr('src','Caution.jpg');
+        } else $('#indicator').attr('src','Warning.jpg');
 
 
         var analysis = {
-            green: displayState + " is reporting all critical data as it relates to COVID-19 tracking. Using the Pennsylvania data driven model as a base" + displayState + "is safe for travel as the states confirmed cases are less than 50 new cases per 100,000 of the popluation",
-            yellow: displayState + " is reporting all critical data as it relates to COVID-19 tracking. Using the Pennsylvania data driven model as a base" + displayState + "is safe for travel but severe caution should be exercises as the states confirmed cases are approximately 50 new cases per 100,000 of the popluation",
-            red: displayState + " is reporting all critical data as it relates to COVID-19 tracking. Using the Pennsylvania data driven model as a base" + displayState + "is not safe for travel as the states confirmed cases are more than 50 new cases per 100,000 of the popluation",
-            orange: "Orange status indicates that " + displayState + " is NOT reporting all critical data as it relates to COVID-19 new cases" + displayState + " should be avoided as this is not enough data to determine levels of infection as they relate to overall population.",
+            green: "Green status indicates that " + displayState + " is reporting all critical data as it relates to COVID-19 tacking.  Two critical components determining the Destination Indicator are new reported cases and active cases per million. Both of these data points for " + displayState + " are favorable.  While the destination has received approval for travel, please conitue exercising safe practices as recommended by the CDC.",
+            yellow: "Yellow status indicates that " + displayState + " is reporting all critical data as it relates to COVID-19 tacking.  Two critical components determining the Destination Indicator are new reported cases and active cases per million. These data points for " + displayState + " show travelers should exercise caution.",
+            red: "Red status indicates that " + displayState + " is reporting all critical data as it relates to COVID-19 tacking.  Two critical components determining the Destination Indicator are new reported cases and active cases per million. These data points for " + displayState + " show this destination should be avoided if possible.",
+            orange: "Orange status indicates that " + displayState + " is NOT reporting all critical data as it relates to COVID-19 tacking.  Two critical components determining the Destination Indicator are new reported cases and active cases per million. Without these data points the current status is undeterminable and as such travel to " + displayState + " should be avoided if possible.",
         }
 
         if(activeIndicator === "Data Not Available") {
