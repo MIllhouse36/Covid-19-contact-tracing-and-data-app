@@ -151,10 +151,10 @@ $(document).on("click", ".searches", function (event) {
 
 
         var analysis = {
-            green: "Green status indicates that " + displayState + " is reporting all critical data as it relates to COVID-19 tacking.  Two critical components determining the Destination Indicator are new reported cases and active cases per million. Both of these data points for " + displayState + " are favorable.  While the destination has received approval for travel, please conitue exercising safe practices as recommended by the CDC.",
-            yellow: "Yellow status indicates that " + displayState + " is reporting all critical data as it relates to COVID-19 tacking.  Two critical components determining the Destination Indicator are new reported cases and active cases per million. These data points for " + displayState + " show travelers should exercise caution.",
-            red: "Red status indicates that " + displayState + " is reporting all critical data as it relates to COVID-19 tacking.  Two critical components determining the Destination Indicator are new reported cases and active cases per million. These data points for " + displayState + " show this destination should be avoided if possible.",
-            orange: "Orange status indicates that " + displayState + " is NOT reporting all critical data as it relates to COVID-19 tacking.  Two critical components determining the Destination Indicator are new reported cases and active cases per million. Without these data points the current status is undeterminable and as such travel to " + displayState + " should be avoided if possible.",
+            green: "Green status indicates favorable travel conditions. The State of " + displayState + " is currently reporting all critical data related to COVID-19 tracking.  Two critical components determining the Destination Indicator status are 'new reported cases' and 'active cases per million'. Both of these data points for " + displayState + " are currently favorable.  While " + displayState + " has received approval for travel, please continue exercising safe practices as recommended by the CDC.",
+            yellow: "Yellow status indicates a need for caution. The State of " + displayState + " is currently reporting all critical data related to COVID-19 tracking.  Two critical components determining the Destination Indicator status are 'new reported cases' and 'active cases per million'. Both of these data points for " + displayState + " show travelers should exercise caution. If you must travel to " + displayState +", please continue exercising safe practices as recommended by the CDC.",
+            red: "Red status indicates avoid, if possible. The State of " + displayState + " is currently reporting all critical data related to COVID-19 tracking.  Two critical components determining the Destination Indicator status are 'new reported cases' and 'active cases per million'. These data points for " + displayState + " show this destination should be avoided if possible. If you must travel to " + displayState +", please continue exercising safe practices as recommended by the CDC.",
+            orange: "Orange status indicates an undetermined status. The State of " + displayState + " is NOT reporting all critical data related to COVID-19 tracking.  Two critical components determining the Destination Indicator status are 'new reported cases' and 'active cases per million'. Without these data points the current status is undetermined. Travel to " + displayState + " should be avoided, if possible. If you must travel to " + displayState +", please continue exercising safe practices as recommended by the CDC.",
         }
 
         if (activeIndicator === "Data Not Available") {
@@ -167,7 +167,7 @@ $(document).on("click", ".searches", function (event) {
 
 
 
-        var queryURL = "https://gnews.io/api/v3/search?q=" + displayState + "-19&token=c3f248a0bf57c314204e7e2deb34f99e";
+        var queryURL = "https://gnews.io/api/v3/search?q=" + displayState + "-19&token=e1d444ffe3f6d9c3a2971b409fec3a76";
         $.ajax({
             url: queryURL,
             method: "GET"
