@@ -16,17 +16,23 @@
 
   <body>
     <header>
-      <h1 class="display-1" id="title">COVID-19 Travel Assistant</h1>
+      <h1 class="display-1 title" id="title">COVID-19 Travel Assistant</h1>
+      <h3 class="display-1 title">Research the latest news on a State before your next visit! </h3>
+
     </header>
     ​
     <!-- NAV Bar -->
     <div class="nav-wrapper container">
       <form class="center-align">
-        <h2>Search for State</h2>
+        <!-- NEW NEW NEW -->
+        <h5 class="white-text">Enter Two Letter State Abbreviation</h5>
         <input class="card l2 s12" id="citySearch" size="40" type="search" required>
         <button class="btn btn-outline-success searches" id="searchBtn" type="submit">Search</button>
+        <!-- NEW NEW NEW -->
+        <div> <a class="white-text" href="https://abbreviations.yourdictionary.com/articles/state-abbrev.html" target="_blank"><small><b>Click for List State Abbreviations</b></small></a></div>
       </form>
     </div>
+    
     <Main class="main container hide" id="main">
       <div class="row container">
         <div class="col l4 s12 card-panel currentData">

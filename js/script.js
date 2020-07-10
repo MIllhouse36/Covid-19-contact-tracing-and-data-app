@@ -2,7 +2,7 @@ $(document).on("click", ".searches", function (event) {
     event.preventDefault();
     var states = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"]
     if ($(this).attr("id") === "searchBtn") {
-        selection = $("#citySearch").val();
+        selection = $("#citySearch").val().toUpperCase();
     }
     console.log(selection)
     i = states.indexOf(selection)
@@ -14,7 +14,7 @@ $(document).on("click", ".searches", function (event) {
     }).then(function (response) {
         console.log(response);
         var state = selection;
-        var stateScore = "(" + response[i].dataQualityGrade + ")"
+        // var stateScore = "(" + response[i].dataQualityGrade + ")"
         var cases = response[i].positive
         var recovered = response[i].recovered
         var casesPer = "("+ (Math.trunc(((response[i].positive/population[i])*1000000))).toLocaleString()+" per million)"
@@ -45,8 +45,9 @@ $(document).on("click", ".searches", function (event) {
         if (response[i].recovered === null) {
             activeIndicator = "Data Not Available"
 
-        } else {activeIndicator = (Math.trunc((((cases - recovered - deaths)/population[i])*1000000))).toLocaleString()
+        } else {activeIndicator = (Math.trunc((((cases - recovered - deaths)/population[i])*1000000)))
         }    
+        console.log(activeIndicator)
 
 
         if (response[i].inIcuCurrently === null) {
@@ -117,7 +118,7 @@ $(document).on("click", ".searches", function (event) {
         console.log(activePer)
 
         $("#state").empty().append(displayState);
-        $("#stateScore").empty().append(stateScore);
+        // $("#stateScore").empty().append(stateScore);
         $("#population").empty().append(pop.toLocaleString());
         $("#cases").empty().append(cases.toLocaleString());
         $("#recovered").empty().append(recovered.toLocaleString());
@@ -138,11 +139,15 @@ $(document).on("click", ".searches", function (event) {
 
         if (activeIndicator === "Data Not Available") {
             $('#indicator').attr('src', 'assets/images/NoInfo.png');
+            $('#indicator').attr('alt', 'Data Not Available');
         } else if (activeIndicator <= 1000) {
             $('#indicator').attr('src', 'assets/images/Ok.png');
+            $('#indicator').attr('alt', 'Good to Travel');
         } else if (activeIndicator >= 1000 && activeIndicator <= 3000) {
             $('#indicator').attr('src', 'assets/images/Caution2.png');
+            $('#indicator').attr('alt', 'Caution Advise');
         } else $('#indicator').attr('src', 'assets/images/DoNot.png');
+        $('#indicator').attr('alt', 'Do not Travel');
 
 
         var analysis = {
