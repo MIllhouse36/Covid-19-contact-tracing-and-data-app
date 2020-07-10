@@ -17,77 +17,85 @@ $(document).on("click", ".searches", function (event) {
         var stateScore = "(" + response[i].dataQualityGrade + ")"
         var cases = response[i].positive
         var recovered = response[i].recovered
-        var casesPer = "(" + (Math.trunc(((response[i].positive / population[i]) * 1000000))) + " per million)"
+        var casesPer = "("+ (Math.trunc(((response[i].positive/population[i])*1000000))).toLocaleString()+" per million)"
         var deaths = response[i].death
-        var deathsPer = "(" + (Math.trunc(((response[i].death / population[i]) * 1000000))) + " per million)"
+        var deathsPer = "("+ (Math.trunc(((response[i].death/population[i])*1000000))).toLocaleString()+" per million)"
         var newCases = response[i].positiveIncrease
 
 
         if (response[i].positiveIncrease === null) {
             newCasesPer = ""
-        } else {
-            newCasesPer = "(" + (Math.trunc(((response[i].positiveIncrease / population[i]) * 1000000))) + " per million)"
-        }
+
+        } else {newCasesPer = "("+ (Math.trunc(((response[i].positiveIncrease/population[i])*1000000))).toLocaleString()+" per million)"
+        }   
 
 
         if (response[i].recovered === null) {
             recoveredPer = ""
-        } else {
-            recoveredPer = "(" + (Math.trunc(((response[i].recovered / population[i]) * 1000000))) + " per million)"
-        }
+
+        } else {recoveredPer = "("+ (Math.trunc(((response[i].recovered/population[i])*1000000))).toLocaleString()+" per million)"
+        }   
 
         if (response[i].recovered === null) {
             activePer = ""
-        } else {
-            activePer = "(" + (Math.trunc((((cases - recovered - deaths) / population[i]) * 1000000))) + " per million)"
-        }
+
+        } else {activePer = "("+ (Math.trunc((((cases - recovered - deaths)/population[i])*1000000))).toLocaleString()+" per million)"
+        }    
 
         if (response[i].recovered === null) {
             activeIndicator = "Data Not Available"
-        } else {
-            activeIndicator = (Math.trunc((((cases - recovered - deaths) / population[i]) * 1000000)))
-        }
+
+        } else {activeIndicator = (Math.trunc((((cases - recovered - deaths)/population[i])*1000000))).toLocaleString()
+        }    
+
 
         if (response[i].inIcuCurrently === null) {
             inIcu = "Data Not Available"
-        } else {
-            inIcu = response[i].inIcuCurrently
+
+        } else {inIcu = response[i].inIcuCurrently.toLocaleString()
+
         }
 
         if (response[i].onVentilatorCurrently === null) {
             ventilator = "Data Not Available"
-        } else {
-            ventilator = response[i].onVentilatorCurrently
+
+        } else {ventilator = response[i].onVentilatorCurrently.toLocaleString()
+
         }
 
         if (response[i].hospitalized === null) {
             hospitalized = "Not Reported"
-        } else {
-            hospitalized = response[i].hospitalized
+
+        } else { hospitalized = response[i].hospitalized.toLocaleString()
+
         }
 
         if (response[i].hospitalizedCurrently === null) {
             currentHosp = "Data Not Available"
-        } else {
-            currentHosp = response[i].hospitalizedCurrently
-        }
+
+        } else { currentHosp = response[i].hospitalizedCurrently.toLocaleString()
+
+}
 
         if (response[i].recovered === null) {
             active = "Data Not Available"
-        } else {
-            active = (cases - recovered - deaths)
-        }
+
+        } else {active = (cases - recovered - deaths).toLocaleString()
+        }        
+
 
         if (response[i].hospitalized === null) {
             hospIncrease = "Data Not Available"
-        } else {
-            hospIncrease = response[i].hospitalizedIncrease
+
+        } else {hospIncrease = response[i].hospitalizedIncrease.toLocaleString()
+
         }
 
         if (response[i].recovered === null) {
             recovered = "Data Not Available"
-        } else {
-            recovered = response[i].recovered
+
+        } else {recovered = response[i].recovered.toLocaleString()
+
         }
 
         var positive = response[i].positive
