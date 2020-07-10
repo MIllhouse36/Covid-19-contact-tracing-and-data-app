@@ -27,16 +27,16 @@
         <!-- NEW NEW NEW -->
         <h5 class="white-text">Enter Two Letter State Abbreviation</h5>
         <input class="card l2  s12" id="citySearch" size="40" type="search" required>
-        <br>
+        
         <button class="btn btn-outline-success searches" id="searchBtn" type="submit">Search</button>
         <!-- NEW NEW NEW -->
         <div> <a class="white-text" href="https://abbreviations.yourdictionary.com/articles/state-abbrev.html" target="_blank"><small><b>Click for List State Abbreviations</b></small></a></div>
       </form>
     </div>
     
-    <Main class="main hide container" id="main">
-      <div class="row container center-align">
-        <div class="col l3 offset-l1 s12 card-panel currentData">
+    <Main class="main hide row container" id="main">
+      <div class="row container">
+        <div class="col l4 m3 s12 card-panel currentData">
           <div class="current"><b>State</b>: <span id="state"></span> <span id="stateScore"> </span></div>
           <div class="current"><b>Population</b>: <span id="population"></span> </div>
           <div class="current"><b>Total Cases</b>: <span id="cases"></span> <span id="casesPerc"></span> </div>
@@ -53,25 +53,25 @@
           <div class="current" id="link"> </div>
           <br>
         </div>
-        <div class="col l3  s12  center-align">
+        <div class="col l4 m3 offset-m1 s12 center-align">
           <h4 id="DestInd s3">Destination Indicator</h4>
           <img class="image s3" id="indicator" src="" alt="">
         </div>
-        <div class="col l3 s12 card-panel">
-          <h5>Analysis</h5>
+        <div class="col l4 m3 offset-m1 s12 card-panel">
+          <h5 class="center-align">Analysis</h5>
           <div class="guidlines" id="analyis"> </div>
           <br>
         </div>
         ​
-      </div>
+      
     </Main>
     <footer class="page-footer teal hide container" id="footer">
       <div class="row container">
         <div class="col l6 offset-l3 s12 ">
-          <h2 class="white-text">Related Top State News</h2>
+          <h2 class="white-text">State News</h2>
         </div>
         <!-- News Article 1 -->
-        <h5 class="col l8 offset-l1 offset-l1 s12 white-text " id="headline0"> </h5>
+        <h5 class="col l8 offset-l1  s12 white-text " id="headline0"> </h5>
         <div class="col l3 s12 white-text" id="div0"> <img class="image" id="image0" src="" alt="" width="125"
             height="75"> </div>
         <!-- News Article 2 -->
