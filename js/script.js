@@ -19,7 +19,7 @@ $(document).on("click", ".searches", function(event){
         var recovered = response[i].recovered
         var casesPer = "("+ (Math.trunc(((response[i].positive/population[i])*1000000))).toLocaleString()+" per million)"
         var deaths = response[i].death
-        var deathsPer = "("+ (Math.trunc(((response[i].death/population[i])*1000000)))+" per million)"
+        var deathsPer = "("+ (Math.trunc(((response[i].death/population[i])*1000000))).toLocaleString()+" per million)"
         var newCases = response[i].positiveIncrease
 
         
