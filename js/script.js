@@ -1,20 +1,27 @@
+// master click event
+
 $(document).on("click", ".searches", function (event) {
     event.preventDefault();
     var states = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"]
     if ($(this).attr("id") === "searchBtn") {
-        selection = $("#citySearch").val().toUpperCase();
+        selection = $("#stateSearch").val().toUpperCase();
     }
     console.log(selection)
+
+    // variable for ajax state request
     i = states.indexOf(selection)
     console.log(i)
+
+    // api callout for state specifics
     var queryURL = "https://covidtracking.com/api/states";
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         console.log(response);
+
+        // sets state statistics
         var state = selection;
-        // var stateScore = "(" + response[i].dataQualityGrade + ")"
         var cases = response[i].positive
         var recovered = response[i].recovered
         var casesPer = "("+ (Math.trunc(((response[i].positive/population[i])*1000000))).toLocaleString()+" per million)"
@@ -22,7 +29,7 @@ $(document).on("click", ".searches", function (event) {
         var deathsPer = "("+ (Math.trunc(((response[i].death/population[i])*1000000))).toLocaleString()+" per million)"
         var newCases = response[i].positiveIncrease
 
-
+        // null filtering conditions
         if (response[i].positiveIncrease === null) {
             newCasesPer = ""
 
@@ -76,7 +83,7 @@ $(document).on("click", ".searches", function (event) {
 
         } else { currentHosp = response[i].hospitalizedCurrently.toLocaleString()
 
-}
+        }
 
         if (response[i].recovered === null) {
             active = "Data Not Available"
@@ -102,6 +109,8 @@ $(document).on("click", ".searches", function (event) {
         var positive = response[i].positive
         var pop = population[i]
         var displayState = stateTrans[i]
+
+        // trending Google data
         var newUrl = `<a class="current ml-2 mt-2" href="https://www.google.com/search?rlz=1C1CHBF_enUS832US832&ei=rE7_XsXaCKGm_Qa__JKoAQ&q=${displayState}+active+covid+19+cases" target="_blank">Click Here for Latest State Trend</a>`
         $(this).attr("href", newUrl);
 
@@ -117,8 +126,8 @@ $(document).on("click", ".searches", function (event) {
         console.log(displayState)
         console.log(activePer)
 
+        // appends to main card
         $("#state").empty().append(displayState);
-        // $("#stateScore").empty().append(stateScore);
         $("#population").empty().append(pop.toLocaleString());
         $("#cases").empty().append(cases.toLocaleString());
         $("#recovered").empty().append(recovered.toLocaleString());
@@ -136,20 +145,7 @@ $(document).on("click", ".searches", function (event) {
         $("#newCases").empty().append(newCases.toLocaleString());
         $("#newCasesPerc").empty().append(newCasesPer.toLocaleString());
 
-
-        if (activeIndicator === "Data Not Available") {
-            $('#indicator').attr('src', 'assets/images/NoInfo.png');
-            $('#indicator').attr('alt', 'Data Not Available');
-        } else if (activeIndicator <= 1000) {
-            $('#indicator').attr('src', 'assets/images/Ok.png');
-            $('#indicator').attr('alt', 'Good to Travel');
-        } else if (activeIndicator >= 1000 && activeIndicator <= 3000) {
-            $('#indicator').attr('src', 'assets/images/Caution2.png');
-            $('#indicator').attr('alt', 'Caution Advise');
-        } else $('#indicator').attr('src', 'assets/images/DoNot.png');
-        $('#indicator').attr('alt', 'Do not Travel');
-
-
+        // analyis variables
         var analysis = {
             green: "Green status indicates favorable travel conditions. The State of " + displayState + " is currently reporting all critical data related to COVID-19 tracking.  Two critical components determining a green status are 'new reported cases' and 'active cases per million.' Both of these data points for " + displayState + " are currently favorable.  While " + displayState + " is approved for travel, please continue exercising safe practices as recommended by the CDC.",
 
@@ -160,16 +156,24 @@ $(document).on("click", ".searches", function (event) {
             orange: "Orange status indicates undetermined travel conditions. The State of " + displayState + " is NOT reporting all critical data related to COVID-19 tracking. Travel to " + displayState + " should be avoided, if possible. If you must travel to " + displayState +", please continue exercising safe practices as recommended by the CDC.",
         }
 
+        // sets indicator logic
         if (activeIndicator === "Data Not Available") {
+            $('#indicator').attr('src', 'assets/images/NoInfo.png');
+            $('#indicator').attr('alt', 'Data Not Available');
             $('#analyis').empty().append(analysis.orange);
         } else if (activeIndicator <= 1000) {
+            $('#indicator').attr('src', 'assets/images/Ok.png');
+            $('#indicator').attr('alt', 'Good to Travel');
             $('#analyis').empty().append(analysis.green);
         } else if (activeIndicator >= 1000 && activeIndicator <= 3000) {
+            $('#indicator').attr('src', 'assets/images/Caution2.png');
+            $('#indicator').attr('alt', 'Caution Advise');
             $('#analyis').empty().append(analysis.yellow);
-        } else $('#analyis').empty().append(analysis.red);
+        } else $('#indicator').attr('src', 'assets/images/DoNot.png');
+            $('#indicator').attr('alt', 'Do not Travel');
+            $('#analyis').empty().append(analysis.red);
 
-
-
+        // Google news api query
         var queryURL = "https://gnews.io/api/v3/search?q=" + displayState + "-19&token=a470e3c9debf6f227fda429be3462608";
         $.ajax({
             url: queryURL,
@@ -193,9 +197,10 @@ $(document).on("click", ".searches", function (event) {
             console.log(newsArray)
 
 
-
+            // hiding main card until click event
             $(".hide").attr("class", "row");
 
+            // grabbing and apending Google api articles based on state selection
             for (let i = 0; i < newsArray.length; i++) {
                 var headline = response.articles[i].title
                 var link = response.articles[i].url
@@ -218,6 +223,7 @@ $(document).on("click", ".searches", function (event) {
     });
 });
 
+// US Census population data
 var population = {
     0: 731545,
     1: 4903185,
@@ -277,6 +283,7 @@ var population = {
     55: 578759,
 }
 
+// displays full state name
 var stateTrans = {
     0: "Alaska",
     1: "Alabama",

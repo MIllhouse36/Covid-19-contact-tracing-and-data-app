@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <title>COVID-19 Travel Assistant</title>
-  <!-- CSS  -->
+  <!-- CSS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="assets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="assets/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -17,26 +17,25 @@
   <body>
     <header>
       <h1 class="display-1 title" id="title">COVID-19 Travel Assistant</h1>
-      <h3 class="display-1 title">Research the latest news on a State before your next visit! </h3>
-
+      <h3 class="display-1 title">Research the latest news on a State before your next visit!</h3>
     </header>
     ​
     <!-- NAV Bar -->
-    <div class="nav-wrapper container">
+    <section class="nav-wrapper container">
       <form class="center-align">
-        <!-- NEW NEW NEW -->
         <h5 class="white-text">Enter Two Letter State Abbreviation</h5>
-        <input class="card l2  s12" id="citySearch" size="40" type="search" required>
-        
+        <input class="card l2  s12" id="stateSearch" size="40" type="search" required>
+
         <button class="btn btn-outline-success searches" id="searchBtn" type="submit">Search</button>
-        <!-- NEW NEW NEW -->
-        <div> <a class="white-text" href="https://abbreviations.yourdictionary.com/articles/state-abbrev.html" target="_blank"><small><b>Click for List of State Abbreviations</b></small></a></div>
+        <div> <a class="white-text" href="https://abbreviations.yourdictionary.com/articles/state-abbrev.html"
+            target="_blank"><small><b>Click for List of State Abbreviations</b></small></a></div>
       </form>
-    </div>
-    
-    <Main class="main hide row container" id="main">
-      <div class="row container">
-        <div class="col l4 m3 s12 card-panel currentData">
+    </section>
+
+    <!-- Statistics Card-->
+    <main class="main hide row container" id="main">
+      <article class="row container">
+        <section class="col l4 m3 s12 card-panel currentData">
           <div class="current"><b>State</b>: <span id="state"></span> <span id="stateScore"> </span></div>
           <div class="current"><b>Population</b>: <span id="population"></span> </div>
           <div class="current"><b>Total Cases</b>: <span id="cases"></span> <span id="casesPerc"></span> </div>
@@ -52,62 +51,64 @@
           <div class="current"><b>Current On Ventilator</b>: <span id="ventilator"></span> </div>
           <div class="current" id="link"> </div>
           <br>
-        </div>
-        <div class="col l4 m3 offset-m1 s12 center-align">
+        </section>
+
+        <section class="col l4 m3 offset-m1 s12 center-align">
           <h4 id="DestInd s3">Destination Indicator</h4>
           <img class="image s3" id="indicator" src="" alt="">
-        </div>
-        <div class="col l4 m3 offset-m1 s12 card-panel">
+        </section>
+
+        <section class="col l4 m3 offset-m1 s12 card-panel">
           <h5 class="center-align">Analysis</h5>
           <div class="guidlines" id="analyis"> </div>
           <br>
-        </div>
-        ​
-      
+        </section>
+      </article>
+
     </Main>
     <footer class="page-footer teal hide container" id="footer">
       <div class="row container">
-        <div class="col l6 offset-l3 s12 ">
+        <div class="col l12 s12 ">
           <h2 class="white-text">State News</h2>
         </div>
         <!-- News Article 1 -->
-        <h5 class="col l8 offset-l1  s12 white-text " id="headline0"> </h5>
+        <h5 class="col l9  s12 white-text " id="headline0"> </h5>
         <div class="col l3 s12 white-text" id="div0"> <img class="image" id="image0" src="" alt="" width="125"
             height="75"> </div>
         <!-- News Article 2 -->
-        <h5 class="col l8 offset-l1 s12 white-text " id="headline1"> </h5>
+        <h5 class="col l9 s12 white-text " id="headline1"> </h5>
         <div class="col l3 s12 white-text" id="div1"> <img class="image" id="image1" src="" alt="" width="125"
             height="75"> </div>
         <!-- News Article 3 -->
-        <h5 class="col l8 offset-l1 s12 white-text " id="headline2"> </h5>
+        <h5 class="col l9 s12 white-text " id="headline2"> </h5>
         <div class="col l3 s12 white-text" id="div2"> <img class="image" id="image2" src="" alt="" width="125"
             height="75"> </div>
         <!-- News Article 4 -->
-        <h5 class="col l8 offset-l1 s12 white-text " id="headline3"> </h5>
+        <h5 class="col l9 s12 white-text " id="headline3"> </h5>
         <div class="col l3 s12 white-text" id="div3"> <img class="image" id="image3" src="" alt="" width="125"
             height="75"> </div>
         <!-- News Article 5 -->
-        <h5 class="col l8 offset-l1 s12 white-text " id="headline4"> </h5>
+        <h5 class="col l9 s12 white-text " id="headline4"> </h5>
         <div class="col l3 s12 white-text" id="div4"> <img class="image" id="image4" src="" alt="" width="125"
             height="75"> </div>
         <!-- News Article 6 -->
-        <h5 class="col l8 offset-l1 s12 white-text " id="headline5"> </h5>
+        <h5 class="col l9 s12 white-text " id="headline5"> </h5>
         <div class="col l3 s12 white-text" id="div5"> <img class="image" id="image5" src="" alt="" width="125"
             height="75"> </div>
         <!-- News Article 7 -->
-        <h5 class="col l8 offset-l1 s12 white-text " id="headline6"> </h5>
+        <h5 class="col l9 s12 white-text " id="headline6"> </h5>
         <div class="col l3 s12 white-text" id="div6"> <img class="image" id="image6" src="" alt="" width="125"
             height="75"> </div>
         <!-- News Article 8 -->
-        <h5 class="col l8 offset-l1 s12 white-text " id="headline7"> </h5>
+        <h5 class="col l9 s12 white-text " id="headline7"> </h5>
         <div class="col l3 s12 white-text" id="div7"> <img class="image" id="image7" src="" alt="" width="125"
             height="75"> </div>
         <!-- News Article 9 -->
-        <h5 class="col l8 offset-l1 s12 white-text " id="headline8"> </h5>
+        <h5 class="col l9 s12 white-text " id="headline8"> </h5>
         <div class="col l3 s12 white-text" id="div8"> <img class="image" id="image8" src="" alt="" width="125"
             height="75"> </div>
         <!-- News Article 10 -->
-        <h5 class="col l8 offset-l1 s12 white-text " id="headline9"> </h5>
+        <h5 class="col l9 s12 white-text " id="headline9"> </h5>
         <div class="col l3 s12 white-text" id="div9"> <img class="image" id="image9" src="" alt="" width="125"
             height="75"> </div>
       </div>
