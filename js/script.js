@@ -144,37 +144,34 @@ $(document).on("click", ".searches", function (event) {
         $("#link").empty().append(newUrl);
         $("#newCases").empty().append(newCases.toLocaleString());
         $("#newCasesPerc").empty().append(newCasesPer.toLocaleString());
-
-        // analyis variables
-        var analysis = {
-            green: "Green status indicates favorable travel conditions. The State of " + displayState + " is currently reporting all critical data related to COVID-19 tracking.  Two critical components determining a green status are 'new reported cases' and 'active cases per million.' Both of these data points for " + displayState + " are currently favorable.  While " + displayState + " is approved for travel, please continue exercising safe practices as recommended by the CDC.",
-
-            yellow: "Yellow status indicates a need for caution. The State of " + displayState + " is currently reporting all critical data related to COVID-19 tracking.  Two critical components determining the yellow status are 'new reported cases' and 'active cases per million.' Both of these data points for " + displayState + " show travelers should exercise caution. If you must travel to " + displayState +", please continue exercising safe practices as recommended by the CDC.",
-
-            red: "Red status indicates one should avoid travel to " + displayState + ". The State of " + displayState + " is currently reporting all critical data related to COVID-19 tracking. Two critical components determining red status are 'new reported cases' and 'active cases per million.' If you must travel to " + displayState +", please continue exercising safe practices as recommended by the CDC.",
-
-            orange: "Orange status indicates undetermined travel conditions. The State of " + displayState + " is NOT reporting all critical data related to COVID-19 tracking. Travel to " + displayState + " should be avoided, if possible. If you must travel to " + displayState +", please continue exercising safe practices as recommended by the CDC.",
-        }
-
-        // sets indicator logic
+        
         if (activeIndicator === "Data Not Available") {
             $('#indicator').attr('src', 'assets/images/NoInfo.png');
             $('#indicator').attr('alt', 'Data Not Available');
-            $('#analyis').empty().append(analysis.orange);
         } else if (activeIndicator <= 1000) {
             $('#indicator').attr('src', 'assets/images/Ok.png');
             $('#indicator').attr('alt', 'Good to Travel');
-            $('#analyis').empty().append(analysis.green);
         } else if (activeIndicator >= 1000 && activeIndicator <= 3000) {
             $('#indicator').attr('src', 'assets/images/Caution2.png');
             $('#indicator').attr('alt', 'Caution Advise');
-            $('#analyis').empty().append(analysis.yellow);
         } else $('#indicator').attr('src', 'assets/images/DoNot.png');
-            $('#indicator').attr('alt', 'Do not Travel');
-            $('#analyis').empty().append(analysis.red);
+        $('#indicator').attr('alt', 'Do not Travel');
+        var analysis = {
+            green: "Green status indicates favorable travel conditions. The State of " + displayState + " is currently reporting all critical data related to COVID-19 tracking.  Two critical components determining a green status are 'new reported cases' and 'active cases per million.' Both of these data points for " + displayState + " are currently favorable.  While " + displayState + " is approved for travel, please continue exercising safe practices as recommended by the CDC.",
+            yellow: "Yellow status indicates a need for caution. The State of " + displayState + " is currently reporting all critical data related to COVID-19 tracking.  Two critical components determining the yellow status are 'new reported cases' and 'active cases per million.' Both of these data points for " + displayState + " show travelers should exercise caution. If you must travel to " + displayState +", please continue exercising safe practices as recommended by the CDC.",
+            red: "Red status indicates one should avoid travel to " + displayState + ". The State of " + displayState + " is currently reporting all critical data related to COVID-19 tracking. Two critical components determining red status are 'new reported cases' and 'active cases per million.' If you must travel to " + displayState +", please continue exercising safe practices as recommended by the CDC.",
+            orange: "Orange status indicates undetermined travel conditions. The State of " + displayState + " is NOT reporting all critical data related to COVID-19 tracking. Travel to " + displayState + " should be avoided, if possible. If you must travel to " + displayState +", please continue exercising safe practices as recommended by the CDC.",
+        }
+        if (activeIndicator === "Data Not Available") {
+            $('#analyis').empty().append(analysis.orange);
+        } else if (activeIndicator <= 1000) {
+            $('#analyis').empty().append(analysis.green);
+        } else if (activeIndicator >= 1000 && activeIndicator <= 3000) {
+            $('#analyis').empty().append(analysis.yellow);
+        } else $('#analyis').empty().append(analysis.red);
 
         // Google news api query
-        var queryURL = "https://gnews.io/api/v3/search?q=" + displayState + "-19&token=a470e3c9debf6f227fda429be3462608";
+        var queryURL = "https://gnews.io/api/v3/search?q=" + displayState + "-19&token=c710c660b47d3d4b8109f149cf2d9d06";
         $.ajax({
             url: queryURL,
             method: "GET"
