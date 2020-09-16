@@ -13,7 +13,7 @@ $(document).on("click", ".searches", function (event) {
     console.log(i)
 
     // api callout for state specifics
-    var queryURL = "https://covidtracking.com/api/states";
+    var queryURL = "https://api.covidtracking.com/states";
     $.ajax({
         url: queryURL,
         method: "GET"
